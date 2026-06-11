@@ -1,9 +1,17 @@
 import Card from "./Card";
-import Cards from "./Cards";
+import { useEffect, useState } from "react";
 export default function Body() {
-  const Cards2 = Cards.map((cards) => {
+  const [cards, setCards] = useState([]);
+  useEffect(() => {
+    fetch(import.meta.env.BACKEND_URL || "http://localhost:3000/")
+      .then((res) => res.json())
+      .then((data) => setCards(data))
+      .catch((err) => console.error(err));
+  }, []);
+  const Cards = cards.map((cards) => {
       return (
           <Card
+              key={cards._id}
               image={cards.image}
               name={cards.name}
               club={cards.club}
@@ -11,20 +19,16 @@ export default function Body() {
               time={cards.time}
               venue={cards.venue}
               link={cards.link}
+              bgColor={cards.bgColor}
           />
       )
     } )
   
   return (
     <>
-      <h1>Eventio</h1>
-      <div className="filter">
-          <button id="All">All</button>
-          <button id="Coding">Coding</button>
-          <button id="NonTech">Non-Tech</button>
-          <button id="Tech">Tech</button>
+      <div className="Body">
+        <div className='container'>{Cards}</div>
       </div>
-      <div className='container'>{Cards2}</div>
     </>
   )
 }

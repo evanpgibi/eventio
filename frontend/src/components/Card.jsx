@@ -1,6 +1,6 @@
 export default function Card(props) {
     return (
-        <div className="card">
+        <div className="card" style={{ backgroundColor: props.bgColor}}>
             <img src={props.image} alt="Image Not Uploaded"></img>
             <h3>{props.name}</h3>
             <p>{props.club}</p>
