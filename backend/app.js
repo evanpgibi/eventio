@@ -4,7 +4,6 @@ import cors from "cors";
 import dotenv from "dotenv";    
 import Event from "./models/Event.js";
 
-dotenv.config();
 const MONGO_URI = process.env.MONGO_URI;
 
 
