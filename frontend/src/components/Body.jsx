@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export default function Body() {
   const [cards, setCards] = useState([]);
   useEffect(() => {
-    fetch(import.meta.env.BACKEND_URL || "http://localhost:3000/")
+    fetch(import.meta.env.VITE_BACKEND_URL || "http://localhost:3000/")
       .then((res) => res.json())
       .then((data) => setCards(data))
       .catch((err) => console.error(err));
